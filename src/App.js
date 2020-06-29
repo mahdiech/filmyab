@@ -5,51 +5,56 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
 function App() {
-  const[latest,setLatest] = useState('');
-useEffect(()=>{
-  axios
-  .get('https://api.themoviedb.org/3/movie/419704?api_key=178a04566db87fea763461f13e269845')
-.then(res => {
-  setLatest(res.data);
-} )
-.catch(err => {
-  console.log(err);
-});
-
-},[]);
+  const [latest,setLatest] = useState('');
+  useEffect(()=>{
+    axios
+    .get('https://api.themoviedb.org/3/movie/popular?api_key=178a04566db87fea763461f13e269845')
+  .then(res => {
+    setLatest(res.data);
+  } )
+  .catch(err => {
+    console.log(err);
+  });
+  
+  },[]);
   return (
-    <div className="App" >
+    <div className="app" >
     <CardDeck >
   <Card bg='light' text='dark' className='text-center' style={{margin:'20px'}}>
     <Card.Img variant="center" src="http://image.tmdb.org/t/p/w342/\/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg" />
     <Card.Body>
-      <Card.Title>{latest.original_title}</Card.Title>
+      <Card.Title>Ad Astra</Card.Title>
       <Card.Text>
-       popularity: {latest.popularity}
+       popularity: 300.628
       </Card.Text>
     </Card.Body>
   </Card>
+
   <Card bg='light' text='dark' className='text-center' style={{margin:'20px'}}>
-    <Card.Img variant="top" src={latest.poster_path} />
+    <Card.Img variant="center" src="http://image.tmdb.org/t/p/w342/\/tI8ocADh22GtQFV28vGHaBZVb0U.jpg" />
     <Card.Body>
-      <Card.Title>Title</Card.Title>
+      <Card.Title>Artemis Fowl</Card.Title>
       <Card.Text>
-      popularity
+       popularity: 142.749
       </Card.Text>
     </Card.Body>
   </Card>
+
   <Card bg='light' text='dark' className='text-center' style={{margin:'20px'}}>
-    <Card.Img variant="top" src={latest.poster_path} />
+    <Card.Img variant="center" src="http://image.tmdb.org/t/p/w342/\/db32LaOibwEliAmSL2jjDF6oDdj.jpg" />
     <Card.Body>
-      <Card.Title>Title</Card.Title>
+      <Card.Title>Star Wars: The Rise of Skywalker</Card.Title>
       <Card.Text>
-      popularity
+       popularity: 132.206
       </Card.Text>
     </Card.Body>
   </Card>
+
+  
 </CardDeck>
     </div>
   );
 }
+
 
 export default App;
